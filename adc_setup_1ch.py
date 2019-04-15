@@ -18,6 +18,5 @@ for i in range(3):
 
 adc.selectADC(0)
 # related to the ADC mode. Can be [1,1,1,1] (1GHz), [1,1,2,2] (500MHz) ,[1,2,3,4] (250MHz)
-# !!! 500MHz might be [1,2,1,2], need to test to refer to data sheet to confirm.
 adc.adc.selectInput([1,1,1,1])
 
