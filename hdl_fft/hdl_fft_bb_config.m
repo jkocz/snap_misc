@@ -15,7 +15,7 @@ function hdl_fft_bb_ip_struct_config(this_block)
 
   % System Generator has to assume that your entity  has a combinational feed through; 
   %   if it  doesn't, then comment out the following line:
-  #this_block.tagAsCombinational;
+  %this_block.tagAsCombinational;
 
   this_block.addSimulinkInport('rst');
   this_block.addSimulinkInport('in_sync');
@@ -28,17 +28,21 @@ function hdl_fft_bb_ip_struct_config(this_block)
   this_block.addSimulinkOutport('out_valid');
   this_block.addSimulinkOutport('ovflw');
   this_block.addSimulinkOutport('out_im_0');
+  out_im_port = this_block.port('out_im_0');
+  out_im_port.setType('UFix_32_0')
   this_block.addSimulinkOutport('out_re_0');
+  out_re_port = this_block.port('out_re_0');
+  out_re_port.setType('UFix_32_0')
 
   out_sync_port = this_block.port('out_sync');
   out_sync_port.setType('UFix_1_0');
-  out_sync_port.useHDLVector(false);
+  %out_sync_port.useHDLVector(false);
   out_valid_port = this_block.port('out_valid');
   out_valid_port.setType('UFix_1_0');
-  out_valid_port.useHDLVector(false);
+  %out_valid_port.useHDLVector(false);
   ovflw_port = this_block.port('ovflw');
   ovflw_port.setType('UFix_1_0');
-  ovflw_port.useHDLVector(false);
+  %ovflw_port.useHDLVector(false);
 
   % -----------------------------
   if (this_block.inputTypesKnown)
