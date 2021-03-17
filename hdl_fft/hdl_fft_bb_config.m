@@ -29,10 +29,10 @@ function hdl_fft_bb_ip_struct_config(this_block)
   this_block.addSimulinkOutport('ovflw');
   this_block.addSimulinkOutport('out_im_0');
   out_im_port = this_block.port('out_im_0');
-  out_im_port.setType('UFix_32_0')
+  out_im_port.setType('UFix_16_0')
   this_block.addSimulinkOutport('out_re_0');
   out_re_port = this_block.port('out_re_0');
-  out_re_port.setType('UFix_32_0')
+  out_re_port.setType('UFix_16_0')
 
   out_sync_port = this_block.port('out_sync');
   out_sync_port.setType('UFix_1_0');
