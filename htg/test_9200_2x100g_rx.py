@@ -2,8 +2,10 @@
 
 import casperfpga, time, struct, sys, logging, socket, numpy
 
-fabric_port= 4000         
+fabric_port= 10000         
 mac_base= (2<<40) + (2<<32)
+mac_base = 2423812259840
+mac_base = 281474976710655
 ip_base = 192*(2**24) + 168*(2**16) + 100*(2**8)
 
 tx_core_name = 'onehundred_gbe'
@@ -45,20 +47,22 @@ try:
     print ('---------------------------')
     print ('Configuring receiver core...')
     gbe_rx = fpga.gbes[rx_core_name]
-    gbe_rx.set_arp_table(mac_base+numpy.arange(256))
-    gbe_rx.configure_core(mac_base+21,ip_base+21,fabric_port)
+    #gbe_rx.set_arp_table(mac_base+numpy.arange(256))
+    #gbe_rx.configure_core(mac_base+21,ip_base+21,fabric_port+1)
+    gbe_rx.configure_core(mac_base,ip_base+21,fabric_port+1)
     print ('done')
 
     print ('Configuring transmitter core...')
     #Set IP address of snap and set arp-table
     gbe_tx = fpga.gbes[tx_core_name]
-    gbe_tx.set_arp_table(mac_base+numpy.arange(256))
-    gbe_tx.configure_core(mac_base+20,ip_base+20,fabric_port)
+    #gbe_tx.set_arp_table(mac_base+numpy.arange(256))
+    #gbe_tx.configure_core(mac_base+20,ip_base+20,fabric_port)
+    gbe_tx.configure_core(mac_base,ip_base+20,fabric_port)
     print ('done')
 
     print ('Setting-up destination addresses...')
-    fpga.write_int('dest_ip',ip_base+21)
-    fpga.write_int('dest_port',fabric_port)
+    fpga.write_int('dest_ip1',ip_base+21)
+    fpga.write_int('dest_port1',fabric_port+1)
     print ('done')
 
 
