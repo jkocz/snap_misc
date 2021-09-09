@@ -1,6 +1,10 @@
+import struct
+import numpy as np
+
+
 SNAPSHOT_SAMPLES_PER_POL = 65536 
 
-def get_adcA():
+def get_adcA(fpga):
         """
         Get a block of samples from both pols of `antenna`
         returns samples_x, samples_y
@@ -18,7 +22,7 @@ def get_adcA():
             y += [d[4*i + 3]]
         return np.array(x), np.array(y)
 
-def get_adcB():
+def get_adcB(fpga):
         """
         Get a block of samples from both pols of `antenna`
         returns samples_x, samples_y
@@ -36,7 +40,7 @@ def get_adcB():
             y += [d[4*i + 3]]
         return np.array(x), np.array(y)
 
-def get_adcC():
+def get_adcC(fpga):
         """
         Get a block of samples from both pols of `antenna`
         returns samples_x, samples_y
